@@ -1,0 +1,102 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <button type="button" (click)="createPost()" class="btn btn-primary mt-5">
+    Add Post
+  </button>
+  <table class="table align-middle bg-white mt-5 border">
+    <thead class="bg-light">
+      <tr>
+        <th>Name</th>
+        <th>Post</th>
+
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let data of postArray">
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <!-- <img
+                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                    /> -->
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ data.username }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ data.text }}</p>
+        </td>
+
+        <td>
+          <button
+            (click)="getPost(data._id)"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            type="button"
+            class="btn btn-primary btn-sm btn-rounded"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            (click)="deletePost(data._id)"
+            data-toggle="modal"
+            data-target="#exampleModal"
+            class="btn btn-danger btn-sm btn-rounded ms-2"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <textarea name="" cols="40" [(ngModel)]="postText"> </textarea>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            (click)="editPost()"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['']">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a
+          class="nav-link active"
+          aria-current="page"
+          [routerLink]="['/profile']"
+          >Profile</a
+        >
+        <a class="nav-link" [routerLink]="['/posts']">Posts</a>
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+    <div class="dropdown mx-5">
+      <!-- <img class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"/> -->
+
+      <img
+        style="height: 30px; width: 30px"
+        class="dropdown-toggle mx-3 rounded-circle"
+        role="button"
+        id="dropdownMenuLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        [src]="userDetails.profilePic ? image : demoImg"
+        alt=""
+      />
+
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li>
+          <a class="dropdown-item" [routerLink]="['/profile']">Profile</a>
+        </li>
+        <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

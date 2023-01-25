@@ -1,0 +1,89 @@
+<div class="login-dark">
+  <form #form="ngForm" (ngSubmit)="form.valid && onSubmit()">
+    <h2 class="sr-only">Sign Form</h2>
+    <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Username"
+        required
+        name="firstName"
+        #firstName="ngModel"
+        [(ngModel)]="data.name"
+      />
+      <label
+        class="text-danger"
+        *ngIf="form.submitted && firstName.errors?.['required']"
+        >firstName is Required</label
+      >
+    </div>
+
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="email"
+        required
+        name="email"
+        #email="ngModel"
+        [(ngModel)]="data.email"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        placeholder="Email"
+      />
+      <label
+        class="text-danger"
+        *ngIf="form.submitted && email.errors?.['required']"
+        >Email is Required</label
+      >
+      <label
+        class="text-danger"
+        *ngIf="form.submitted && email.errors?.['pattern']"
+        >Invalid Email</label
+      >
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="number"
+        required
+        name="phone"
+        #phone="ngModel"
+        [(ngModel)]="data.phone"
+        pattern="^((\\+91-?)|0)?[0-9]{10}$"
+        placeholder="Phone"
+      />
+
+      <label
+        class="text-danger"
+        *ngIf="form.submitted && phone.errors?.['required']"
+        >Phone is Required</label
+      >
+      <label
+        class="text-danger"
+        *ngIf="form.submitted && phone.errors?.['pattern']"
+        >Invalid Phone number</label
+      >
+    </div>
+
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="password"
+        required
+        name="password"
+        #password="ngModel"
+        [(ngModel)]="data.password"
+        placeholder="Password"
+      />
+      <label
+        class="text-danger"
+        *ngIf="form.submitted && password.errors?.['required']"
+        >Password is Required</label
+      >
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+    </div>
+    <a href="#" class="forgot">Forgot your email or password?</a>
+  </form>
+</div>

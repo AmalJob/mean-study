@@ -1,0 +1,49 @@
+<div class="container">
+  <table class="table align-middle bg-white mt-5 border">
+    <thead class="bg-light">
+      <tr>
+        <th>Name</th>
+        <th>Post</th>
+
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let data of postArray">
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <!-- <img
+                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                /> -->
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ data.username }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ data.text }}</p>
+        </td>
+
+        <td>
+          <button
+            type="button"
+            (click)="blockPost(data._id)"
+            class="btn btn-primary btn-sm btn-rounded"
+          >
+            block post
+          </button>
+          <button
+            type="button"
+            (click)="blockUser(data.userId)"
+            class="btn btn-danger btn-sm btn-rounded ms-2"
+          >
+            block user
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
